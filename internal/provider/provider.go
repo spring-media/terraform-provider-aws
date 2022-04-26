@@ -113,6 +113,7 @@ import (
 	"github.com/hashicorp/terraform-provider-aws/internal/service/mediaconvert"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/mediapackage"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/mediastore"
+	"github.com/hashicorp/terraform-provider-aws/internal/service/mediatailor"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/memorydb"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/meta"
 	"github.com/hashicorp/terraform-provider-aws/internal/service/mq"
@@ -721,6 +722,8 @@ func Provider() *schema.Provider {
 			"aws_region":                  meta.DataSourceRegion(),
 			"aws_regions":                 meta.DataSourceRegions(),
 			"aws_service":                 meta.DataSourceService(),
+
+			"aws_media_tailor_playback_configuration": mediatailor.DataSourcePlaybackConfiguration(),
 
 			"aws_memorydb_acl":             memorydb.DataSourceACL(),
 			"aws_memorydb_cluster":         memorydb.DataSourceCluster(),
@@ -1605,6 +1608,8 @@ func Provider() *schema.Provider {
 			"aws_media_store_container":        mediastore.ResourceContainer(),
 			"aws_media_store_container_policy": mediastore.ResourceContainerPolicy(),
 
+			"aws_media_tailor_playback_configuration": mediatailor.ResourcePlaybackConfiguration(),
+
 			"aws_memorydb_acl":             memorydb.ResourceACL(),
 			"aws_memorydb_cluster":         memorydb.ResourceCluster(),
 			"aws_memorydb_parameter_group": memorydb.ResourceParameterGroup(),
@@ -1684,6 +1689,7 @@ func Provider() *schema.Provider {
 			"aws_pinpoint_sms_channel":               pinpoint.ResourceSMSChannel(),
 
 			"aws_qldb_ledger": qldb.ResourceLedger(),
+			"aws_qldb_stream": qldb.ResourceStream(),
 
 			"aws_quicksight_data_source":      quicksight.ResourceDataSource(),
 			"aws_quicksight_group":            quicksight.ResourceGroup(),
@@ -1942,10 +1948,11 @@ func Provider() *schema.Provider {
 			"aws_timestreamwrite_database": timestreamwrite.ResourceDatabase(),
 			"aws_timestreamwrite_table":    timestreamwrite.ResourceTable(),
 
-			"aws_transfer_access":  transfer.ResourceAccess(),
-			"aws_transfer_server":  transfer.ResourceServer(),
-			"aws_transfer_ssh_key": transfer.ResourceSSHKey(),
-			"aws_transfer_user":    transfer.ResourceUser(),
+			"aws_transfer_access":   transfer.ResourceAccess(),
+			"aws_transfer_server":   transfer.ResourceServer(),
+			"aws_transfer_ssh_key":  transfer.ResourceSSHKey(),
+			"aws_transfer_user":     transfer.ResourceUser(),
+			"aws_transfer_workflow": transfer.ResourceWorkflow(),
 
 			"aws_waf_byte_match_set":          waf.ResourceByteMatchSet(),
 			"aws_waf_geo_match_set":           waf.ResourceGeoMatchSet(),
